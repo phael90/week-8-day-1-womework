@@ -1,16 +1,32 @@
 import db.DBDrummer;
-import db.DBDrums;
 import models.Drummer;
-import models.Drums;
+
+import java.util.List;
 
 public class Runner {
 
     public static void main(String[] args) {
 //        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Drummer drummer = new Drummer("Newman", "Baker");
-        DBDrummer.save(drummer);
+        Drummer drummer1 = new Drummer("Newman", "Baker");
+        DBDrummer.save(drummer1);
 
-    Drums drums = new Drums("Gretch");
-        DBDrums.save(drums);
+        Drummer drummer2 = new Drummer("Erick", "Allen");
+        DBDrummer.save(drummer2);
+
+        Drummer drummer3 = new Drummer("Arron", "Scott");
+        DBDrummer.save(drummer3);
+
+        Drummer drummer4 = new Drummer("John", "Betsch");
+        DBDrummer.save(drummer4);
     }
+
+    List<Drummer> drummers = DBDrummer.getAll();
+
+    Drummer foundDrummer = DBDrummer.findById(2);
 }
+
+
+
+
+
+

@@ -59,4 +59,32 @@ public class DBDrummer {
         }
         return result;
     }
+
+    public static void update(Drummer drummer) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.update(drummer);
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+
+        } finally {
+            session.close();
+        }
+    }
+
+    public static void delete(Drummer drummer) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.delete(drummer);
+            transaction.commit();
+        } catch (HibernateException e) {
+            transaction.rollback();
+
+        } finally {
+            session.close();
+        }
+    }
 }
